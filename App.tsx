@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, createContext } from 'react';
 import { HashRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { User, UserRole } from './types';
@@ -8,6 +7,7 @@ import { Dashboard } from './components/Dashboard';
 import { SubscriptionScreen, SettingsScreen, AdManagementScreen, SubscriptionNoticeScreen } from './pages/StoreManagementScreens';
 import { SupportScreen, ChatListScreen, ChatScreen } from './pages/CommunicationScreens';
 import { CartIcon, UserCircleIcon, BellIcon, LogoutIcon } from './components/Icons';
+import { GeminiChatBot } from './components/GeminiChatBot';
 
 // Mock Data
 const mockUsers: { [key: string]: User } = {
@@ -135,8 +135,8 @@ const Main = () => {
                     
                     <Route path="*" element={<Navigate to={user ? '/' : '/auth'} />} />
                 </Routes>
+                {user && <GeminiChatBot />}
             </main>
         </>
     );
 }
-
